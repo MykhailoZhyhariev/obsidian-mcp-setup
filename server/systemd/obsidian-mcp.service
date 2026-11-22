@@ -1,0 +1,37 @@
+[Unit]
+Description=Obsidian vault MCP server (read-only, streamable HTTP)
+After=network.target
+
+[Service]
+Type=simple
+User=mcp
+Group=mcp
+# Read access to the synced vault (owned by vault:vault, mode 0750).
+SupplementaryGroups=vault
+EnvironmentFile=/etc/obsidian-mcp/env
+Environment=NODE_ENV=production
+WorkingDirectory=/opt/obsidian-mcp
+ExecStart=/usr/bin/node src/index.js
+Restart=always
+RestartSec=3
+
+# Sandbox: the process cannot write anywhere, see home dirs, or open non-IP sockets.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+CapabilityBoundingSet=
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+ReadOnlyPaths=/srv/vault
+
+[Install]
+WantedBy=multi-user.target

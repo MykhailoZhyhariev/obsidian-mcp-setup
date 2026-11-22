@@ -1,0 +1,19 @@
+{
+  "name": "obsidian-vault-mcp",
+  "version": "0.1.0",
+  "description": "Read-only MCP server (streamable HTTP) exposing an Obsidian vault",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "express": "^5.3.0",
+    "zod": "^4.6.7"
+  }
+}

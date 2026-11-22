@@ -1,0 +1,28 @@
+[Unit]
+Description=Obsidian Headless Sync (continuous)
+Documentation=https://obsidian.md/help/sync/headless
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vault
+Group=vault
+# Files are created 0640 / dirs 0750 so the (separate) mcp user can read them via group "vault".
+UMask=0027
+WorkingDirectory=/srv/vault
+ExecStart=__OB_BIN__ sync --continuous --path /srv/vault
+Restart=on-failure
+RestartSec=15
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

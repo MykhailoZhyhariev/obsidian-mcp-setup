@@ -1,0 +1,31 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "LightsailForObsidianMcp",
+      "Effect": "Allow",
+      "Action": [
+        "lightsail:GetBlueprints",
+        "lightsail:GetBundles",
+        "lightsail:GetRegions",
+        "lightsail:GetInstance",
+        "lightsail:GetInstances",
+        "lightsail:GetInstanceState",
+        "lightsail:GetInstancePortStates",
+        "lightsail:GetStaticIp",
+        "lightsail:GetStaticIps",
+        "lightsail:GetOperation",
+        "lightsail:GetOperations",
+        "lightsail:GetAutoSnapshots",
+        "lightsail:GetInstanceSnapshots",
+        "lightsail:CreateInstances",
+        "lightsail:AllocateStaticIp",
+        "lightsail:AttachStaticIp",
+        "lightsail:PutInstancePublicPorts",
+        "lightsail:EnableAddOn",
+        "lightsail:TagResource"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
